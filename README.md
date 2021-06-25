@@ -61,7 +61,7 @@ combinations of parameters for both the Steering PID and the Speed PID.
 
 I started with values like `P=2, I=0.001, D=2.0`
 but the controller oscillated too much.
-With `P=1` the controller kept oscillating but in a lesser degree.
+With `P=1` and `P=0.5` the controller kept oscillating but in a lesser degree.
 I kept decreasing the `P` value to `P=0.15` and `P=0.1`
 and then the car moved much better.
 Then I decreased the `D` value to `D=1` and the controller worked like charm.
