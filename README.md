@@ -5,7 +5,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ## Describe the effect each of the P, I, D components had in your implementation.
 
-Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?
+**Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?**
 
 ![images/pid.png](images/pid.png)
 
@@ -14,20 +14,39 @@ of the error in a proportional way. If the error is big, the action taken will b
 If the error is small, the action taken will be small as well.
 However, the result of using the proportional component alone is not enough
 to control the variable because the error will oscillate in a sinusoidal pattern
-as you can see in the graph above.
+as you can see the `P` controller in the graph above.
 
+The derivate component `D` smooths the action of the proportional component `P`.
+Instead of moving abruptly and causing sinusoidal oscillations, the smoothness
+brought by the derivate component `D` makes the control variable approach the goal
+value in asymptotical way without oscillations. You can see the `PD` controller
+in the graph above.
 
+The integral component `I` compensates internal damages of the machinery which
+makes the control variable have small and persistent deviations from the goal value.
+By using the integral component `I`, you can integrate all these small deviations 
+over time and take an action against this overall sum of small deviations.
+So, the control variable can actually reach the goal value.
+You can see the `PID` controller in the graph above.
 
-Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.
+**Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.**
 
 **PID Controller (SDCE ND)<br/>
 https://youtu.be/H2u2aAMx8k4**<br/>
 
 ![images/video.png](images/video.png)
 
+As you can see in the video, the car oscillates very little thanks to a good
+callibration of the `PD` controller. The small integral component `I` compensates
+any small deviations from the goal value.
+
 ## Describe how the final hyperparameters were chosen.
 
-Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!
+**Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!**
+
+In summary, I used both manual tuning and my extensive experience in artificial
+intelligence <https://www.linkedin.com/in/jckuri/> to find out very good 
+combinations of parameters for both the Steering PID and the Speed PID.
 
 ```
   //steering_pid.Init(0.15, 0.0001, 1.0);
@@ -39,6 +58,22 @@ Student discusses how they chose the final hyperparameters (P, I, D coefficients
   //speed_pid.Init(0.15, 0.0001, 1.0);
   speed_pid.Init(0.1, 0.00001, 1.0); // EXCELLENT!
 ```
+
+I started with values like `P=2, I=0.001, D=2.0`
+but the controller oscillated too much.
+With `P=1` the controller kept oscillating but in a lesser degree.
+I kept decreasing the `P` value to `P=0.15` and `P=0.1`
+and then the car moved much better.
+Then I decreased the `D` value to `D=1` and the controller worked like charm.
+Finally, I noticed that the `I` value could be reduced to `I=0.00001` without 
+problems.
+
+The oscillations in the steering manifested very evidently when the car moved
+in a zigzag pattern. Whereas the oscillations in the speed were less evident
+but I noticed there were oscillations in the speed when the brake lights in the
+back were tilting too often. After callibrating the speed PID to avoid speed
+oscillations, the brake lights turned on rarely. By the way, the goal speed was
+30 MPH, which is quick enough and safe enough, a good balance.
 
 ---
 
