@@ -9,6 +9,15 @@ Student describes the effect of the P, I, D component of the PID algorithm in th
 
 ![images/pid.png](images/pid.png)
 
+The proportional component `P` moves the control variable in the opposite direction
+of the error in a proportional way. If the error is big, the action taken will be big as well.
+If the error is small, the action taken will be small as well.
+However, the result of using the proportional component alone is not enough
+to control the variable because the error will oscillate in a sinusoidal pattern
+as you can see in the graph above.
+
+
+
 Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.
 
 **PID Controller (SDCE ND)<br/>
@@ -20,7 +29,16 @@ https://youtu.be/H2u2aAMx8k4**<br/>
 
 Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!
 
-
+```
+  //steering_pid.Init(0.15, 0.0001, 1.0);
+  //steering_pid.Init(0.15, 0.0001, 1.0);
+  //steering_pid.Init(0.2, 0.00001, 2.0);
+  steering_pid.Init(0.15, 0.00001, 1.0);
+  
+  //speed_pid.Init(0.1, 0.0001, 0.01);
+  //speed_pid.Init(0.15, 0.0001, 1.0);
+  speed_pid.Init(0.1, 0.00001, 1.0); // EXCELLENT!
+```
 
 ---
 
