@@ -11,6 +11,9 @@ Student describes the effect of the P, I, D component of the PID algorithm in th
 
 Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.
 
+**PID Controller (SDCE ND)<br/>
+https://youtu.be/H2u2aAMx8k4**<br/>
+
 ![video.png](video.png)
 
 ## Describe how the final hyperparameters were chosen.
