@@ -7,7 +7,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?
 
-
+![images/pid.png](images/pid.png)
 
 Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.
 
