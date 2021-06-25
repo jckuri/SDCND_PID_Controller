@@ -69,8 +69,8 @@ Finally, I noticed that the `I` value could be reduced to `I=0.00001` without
 problems.
 
 The oscillations in the steering manifested very evidently when the car moved
-in a zigzag pattern. Whereas the oscillations in the speed were less evident
-but I noticed there were oscillations in the speed when the brake lights in the
+in a zigzag pattern. Whereas the oscillations in the speed were less evident.
+But I noticed there were oscillations in the speed when the brake lights in the
 back were tilting too often. After callibrating the speed PID to avoid speed
 oscillations, the brake lights turned on rarely. By the way, the goal speed was
 30 MPH, which is quick enough and safe enough, a good balance.
